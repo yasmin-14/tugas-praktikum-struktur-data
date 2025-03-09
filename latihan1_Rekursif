@@ -1,0 +1,25 @@
+import 'dart:io';
+
+int pascal(int row, int col) {
+  if (col == 0 || col == row) {
+    return 1; // Elemen pertama dan terakhir selalu 1
+  }
+  return pascal(row - 1, col - 1) + pascal(row - 1, col);
+}
+
+void printPascalPyramid(int n) {
+  for (int i = 0; i < n; i++) {
+    // Memberikan spasi di awal untuk membuat bentuk piramida
+    stdout.write(" " * (n - i)); 
+
+    for (int j = 0; j <= i; j++) {
+      stdout.write("${pascal(i, j)}   "); // Memberikan jarak antara angka
+    }
+    print(""); // Pindah ke baris berikutnya
+  }
+}
+
+void main() {
+  int n = 6; // Jumlah baris segitiga Pascal
+  printPascalPyramid(n);
+}
