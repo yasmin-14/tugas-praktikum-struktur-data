@@ -1,0 +1,27 @@
+int binarySearch(List<int> arr, int left, int right, int target) {
+  if (left > right) {
+    return -1; // Tidak ditemukan
+  }
+
+  int mid = left + (right - left) ~/ 2;
+
+  if (arr[mid] == target) {
+    return mid;
+  } else if (arr[mid] > target) {
+    return binarySearch(arr, left, mid - 1, target);
+  } else {
+    return binarySearch(arr, mid + 1, right, target);
+  }
+}
+
+void main() {
+  List<int> data = [20, 15, 85, 14, 42, 50, 10, 45, 67, 80, 90, 110, 100];
+  int target = 10;
+  int index = binarySearch(data, 0, data.length - 1, target);
+
+  if (index != -1) {
+    print('Data $target berada pada indeks ke-$index');
+  } else {
+    print('Data $target tidak ditemukan');
+  }
+}
